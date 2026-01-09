@@ -67,7 +67,11 @@ TARGET_UNIVERSE = "bangalore_hiphop"  # bangalore_hiphop, silicon_valley, space_
 | Frankenstein | Silicon Valley | AI ethics tragedy |
 | Hamlet | Space Colony | Political intrigue on Mars |
 
+## 🔒 Security
 
+- API keys via environment variables (never committed)
+- `.gitignore` protects sensitive files
+- No hardcoded credentials
 
 ## 📖 Output Files
 
@@ -85,7 +89,9 @@ TARGET_UNIVERSE = "bangalore_hiphop"  # bangalore_hiphop, silicon_valley, space_
 
 Public domain texts from [Project Gutenberg](https://gutenberg.org)
 
+## 📄 License
 
+Educational use only.
 ```
 
 ---
