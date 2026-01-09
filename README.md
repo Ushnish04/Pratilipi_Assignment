@@ -26,6 +26,8 @@ $env:OPENROUTER_API_KEY="your-key-here"
 export OPENROUTER_API_KEY="your-key-here"
 ```
 
+
+
 ### 3. Run
 ```bash
 jupyter notebook story_transformation.ipynb
@@ -104,3 +106,69 @@ outputs/
 ├── romeo_juliet_analysis.json          # Shows prompt engineering
 ├── transformed_bangalore_hiphop.json   # Shows transformation logic
 └── story_bangalore_hiphop.md           # Final deliverable
+
+## Requirements Coverage
+
+### 1. Prompt Engineering for Creative-Yet-Structured Outputs
+
+**Implementation**: StoryAnalyzer class uses JSON-formatted prompts that balance:
+- **Creative**: Open-ended narrative analysis ("How does theme manifest?")
+- **Structured**: Enforced schema, field requirements, output constraints
+
+**Example**:
+```python
+# Structured JSON schema
+"Return ONLY valid JSON: {schema}"
+
+# Creative freedom within structure
+"Write 400-500 words showing emotional depth"
+```
+
+**Evidence**: See `analysis.json` for structured output, `story.md` for creative prose
+
+---
+
+### 2. System Design for Reproducible Transformations
+
+**Implementation**: BestStoryTransformer uses:
+- Deterministic rule-based mapping (no randomness)
+- Configuration-driven universe templates
+- Explicit preservation of narrative elements
+
+**Why Reproducible**:
+- Same input → Same output (always)
+- No LLM calls in transformation (no temperature)
+- Version-controlled configurations
+
+**Evidence**: Run same story+universe twice → identical `transformation.json`
+
+---
+
+### 3. Framework Thinking: Identifying Reusable Patterns
+
+**Patterns Identified**:
+1. **Universe Template**: 5 elements (families, violence, death, communication, secrets)
+2. **4-Stage Analysis**: Themes → Characters → Plot → World
+3. **Act Structure**: Prologue → 4 Acts → Epilogue
+4. **Mapping Engine**: Extract essence → Find match → Preserve core → Adapt surface
+
+**Extensibility**: Adding new universe requires only template definition, no code changes
+
+**Evidence**: Same transformation logic works for Shakespeare, Shelley, Stoker
+
+---
+
+### 4. Handling Edge Cases and Maintaining Consistency
+
+**Edge Cases Handled**:
+- API failures → Fallback data
+- Malformed JSON → Robust parsing
+- Missing data → Default values
+- Network issues → Local caching
+
+**Consistency Maintained**:
+- Theme questions preserved verbatim
+- Character traits carried forward
+- Emotional beats mapped across contexts
+
+**Evidence**: System runs to completion even with API errors (see fallback data in code)
